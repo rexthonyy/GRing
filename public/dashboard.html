@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Dashboard</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="css/dashboard.css"/>
+		<link type="text/css" rel="stylesheet" href="css/dialog.css"/>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script src="js/peerjs.js"></script>
+		<script type="text/javascript" src="js/consts.js"></script>
+		<script type="text/javascript" src="js/utility.js"></script>
+		<script type="text/javascript" src="js/dashboard_audio.js"></script>
+		<script type="text/javascript" src="js/dashboard_connection.js"></script>
+		<script type="text/javascript" src="js/dashboard_getters.js"></script>
+		<script type="text/javascript" src="js/dashboard_tabs.js"></script>
+		<script type="text/javascript" src="js/dashboard_displays.js"></script>
+		<script type="text/javascript" src="js/dashboard_dialogs.js"></script>
+		<script type="text/javascript" src="js/dashboard.js"></script>
+	</head>
+
+	<body>
+		<div id="mainContainer">
+			<!--Side Navigation -->
+			<nav id="sideNav">
+				<div id="logoNavContainer">
+					<div class="navContainer">
+						<a href="index.html">
+							<p id="appName"><span style="color:blue;">G</span>Ring</p>
+						</a>
+					</div>
+				</div>
+				<div id="actionableNavContainer">
+					<div class="navContainer">
+						<div class="navItemContainer activeSideNavTab">
+							<img src="images/icons/ic_dialer_white.png" width="32px" height="32px"/>
+							<p>Dialer</p>
+						</div>
+						<div class="spacer16px"></div>
+						<div class="navItemContainer">
+							<img src="images/icons/ic_recent_white.png" width="32px" height="32px"/>
+							<p>Recent</p>
+						</div>
+						<div class="spacer16px"></div>
+						<div class="navItemContainer">
+							<img src="images/icons/ic_contacts_white.png" width="32px" height="32px"/>
+							<p>Contacts</p>
+						</div>
+					</div>
+				</div>
+				<div id="settingsNavContainer">
+					<div class="navContainer">
+						<div class="navItemContainer">
+							<img src="images/icons/ic_logout_white.png" width="32px" height="32px"/>
+							<p>Logout</p>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<!--The Display-->
+			<div id="contentContainer">
+				<div id="displayContainer">
+					<!-- Display => Dialer Tab -->
+					<div class="menuContainer">
+						<!-- Dialer => Search, Recently contacted contacts-->
+						<nav class="menuSideNav">
+							<!--Dialer => Search-->
+							<div class="searchContainer">
+								<div class="navContainer">
+									<input type="text" class="searchInput" placeholder="Search"/>
+								</div>
+							</div>
+							<!--Dialer => New contact, Recently contacted contacts-->
+							<div class="listContainer">
+
+								<!--Dialer => Recently contacted contacts-->
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Danel Shiffman</p>
+													<p class="listItemDesc">@daniel_shiffman</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Rex Anthony</p>
+													<p class="listItemDesc">@rexthonyy</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Jerry Smith</p>
+													<p class="listItemDesc">@jerrySmith</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Ibrahim Musa</p>
+													<p class="listItemDesc">@musaIbrahim</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Precious Agu</p>
+													<p class="listItemDesc">@preciousAgu</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>	
+							</div>
+						</nav>
+						<!-- Dialer => The toolbar, Dialer and Add contact -->
+						<div class="menuInfo">
+							<!-- The toolbar -->
+							<div class="menuInfoNavContainer">
+								<div class="navContainer">
+									<p>Dialer</p>
+								</div>
+							</div>
+							<!-- Dialer and new contact -->
+							<div class="menuInfoContentContainer">
+								<!-- Dialer -->
+								<div class="menuInfoContentCallContactContainer">
+									<div class="dialerContainer">
+										<input type="text" id="usernameInput" class="searchInput" placeholder="@username"/>
+										<div class="dialerButtonContainer">
+											<div class="mt-32px">
+												<button id="video-call-btn" class="dialerButton mb-32px">Video Call</button>
+												<br/>
+												<button id="voice-call-btn" class="dialerButton">Voice Call</button>
+											</div>
+											<p class="errorMessage mt-32px">@williams123 does not exist</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Display => Recent Tab -->
+					<div class="menuContainer">
+						<!-- Recent => Search, Call log-->
+						<nav class="menuSideNav">
+							<!-- Recent => Search -->
+							<div class="searchContainer">
+								<div class="navContainer">
+									<input type="text" class="searchInput" placeholder="Search"/>
+								</div>
+							</div>
+							<!--Recent => Call log-->
+							<div class="listContainer">
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Danel Shiffman <span class="listItemInlineUsername">@danielShiffman</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_outgoing.png" width="16px" height="16px"/>
+														2 October, 10:26pm
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Afianix Beauty <span class="listItemInlineUsername">@afianix</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_incoming.png" width="16px" height="16px"/>
+														14 June, 10:20am
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Peter MD <span class="listItemInlineUsername">@peterson</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_missed.png" width="16px" height="16px"/>
+														(2) 14 October, 10:41pm
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Brandon Smith <span class="listItemInlineUsername">@brandon</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_outgoing.png" width="16px" height="16px"/>
+														26 October, 7:41pm
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+							
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Stephanie Stemac <span class="listItemInlineUsername">@stephanie</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_missed.png" width="16px" height="16px"/>
+														(4) 01/11/2019, 1:02pm
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Clement Ajibola <span class="listItemInlineUsername">@clemox</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_incoming.png" width="16px" height="16px"/>
+														12/11/2019, 7:48pm
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Favor Emmanuel <span class="listItemInlineUsername">@favorEmmanuel</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_outgoing.png" width="16px" height="16px"/>
+														1 September, 10:30am
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Potential Chukwu <span class="listItemInlineUsername">@potentialGlobal</span></p>
+													<p class="listItemDesc">
+														<img src="images/icons/ic_call_outgoing.png" width="16px" height="16px"/>
+														16 May, 3:55pm
+													</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+							</div>
+						</nav>
+						<!-- Recent => contact display and empty display -->
+						<div class="menuInfo">
+							<div class="menuInfoContentDisplay">
+								<!-- The toolbar -->
+								<div class="menuInfoNavContainer">
+									<div class="navContainer">
+										<p>Contact info</p>
+									</div>
+								</div>
+								<!-- Contact info and history -->
+								<div class="menuInfoContentContainer">
+									<div class="menuInfoContactInfoContainer">
+										<table class="menuInfoContactProfilePicContainer">
+											<tr>
+												<td class="profilePicCol">
+													<img class="menuInfoContactProfilePic" src="images/icons/ic_avatar.png"/>
+												</td>
+												<td class="actionsCol">
+													<img src="images/icons/ic_video_call_circle.png"/>
+													<img src="images/icons/ic_phone_circle.png"/>
+												</td>
+											</tr>
+										</table>
+					
+										<p class="menuInfoContactDisplayName">Rex Anthony</p>
+										<p class="menuInfoContactUsername">@rexthonyy</p>
+										<p class="menuInfoContactDescription">Hello there, I am using GRing to make free phone calls and connect with the people that I care about.</p>
+
+										<h1 class="menuInfoContactHistoryHeader">History</h1>
+
+										
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_missed_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">4th November 2020 at 3:43pm</p>
+													<p class="listItemDesc">
+														Missed call
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_outgoing_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">29 September 2020 at 11:05pm</p>
+													<p class="listItemDesc">
+														Outgoing call
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_incoming_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">6th January 2019 at 3:43pm</p>
+													<p class="listItemDesc">
+														Incoming call
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_incoming_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">17th June 2020 at 2:09am</p>
+													<p class="listItemDesc">
+														Incoming call, 8 min 7 secs
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_outgoing_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">31st October 2020 at 12:56pm</p>
+													<p class="listItemDesc">
+														Outgoing call, 1 min 36 secs
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<div class="menuInfoEmptyDisplay"></div>
+						</div>
+					</div>
+					<!-- Display => Contacts Tab -->
+					<div class="menuContainer">
+						<!-- Contacts => Search, New contact, Contacts -->
+						<nav class="menuSideNav">
+							<!-- Contacts => Search-->
+							<div class="searchContainer">
+								<div class="navContainer">
+									<input type="text" class="searchInput" placeholder="Search"/>
+								</div>
+							</div>
+
+							<!--Contacts => New contact, Recently contacted contacts-->
+							<div class="listContainer">
+
+								<!--Dialer => New contact-->
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_add_contact.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											New contact
+										</div>
+									</div>
+									<div class="listItemDummy"></div>
+								</div>
+
+								<!--Dialer => Recently contacted contacts-->
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Danel Shiffman</p>
+													<p class="listItemDesc">@daniel_shiffman</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Rex Anthony</p>
+													<p class="listItemDesc">@rexthonyy</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Jerry Smith</p>
+													<p class="listItemDesc">@jerrySmith</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Ibrahim Musa</p>
+													<p class="listItemDesc">@musaIbrahim</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Precious Agu</p>
+													<p class="listItemDesc">@preciousAgu</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Valerie Ademola</p>
+													<p class="listItemDesc">@val_ademola</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">William Stone</p>
+													<p class="listItemDesc">@willStone</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>
+
+								<div class="listItem">
+									<div class="imgListItemSection">
+										<img src="images/icons/ic_avatar.png"/>
+									</div>
+									<div class="infoListItemSection">
+										<div class="navContainer">
+											<div class="descListItemSection">
+												<div class="navContainer">
+													<p class="listItemName">Becky Williams</p>
+													<p class="listItemDesc">@becky</p>
+												</div>
+											</div>
+											<div class="iconListItemSection">
+												<div class="navContainer">
+													<img class="listItemPhone"src="images/icons/ic_phone_white.png" width="24px" height="24px"/>
+												</div>
+											</div>
+										</div>
+									</div> 
+									<div class="listItemDummy"></div>
+								</div>			
+							</div>
+						</nav>
+						<!-- Contacts => the toolbar, Dialer and Add contact -->
+						<div class="menuInfo">
+							<!-- The toolbar -->
+							<div class="menuInfoNavContainer">
+								<div class="navContainer">
+									<p>Contact info</p>
+								</div>
+							</div>
+							<!-- Add contact and contact info -->
+							<div class="menuInfoContentContainer">
+								<!--Add contact-->
+								<div class="menuInfoContentAddContactContainer">
+									<div class="dialerContainer">
+										<input type="text" class="searchInput" placeholder="@username"/>
+										<div class="dialerButtonContainer">
+											<button class="dialerButton">Add Contact</button>
+											<p class="errorMessage">@williams123 does not exist</p>
+										</div>
+									</div>
+								</div>
+								<!-- Contact info and history -->
+								<div class="menuInfoContactInfoContainer contactMenuInfoContactInfoContainer">
+									<table class="menuInfoContactProfilePicContainer">
+											<tr>
+												<td class="profilePicCol">
+													<img class="menuInfoContactProfilePic" src="images/icons/ic_avatar.png"/>
+												</td>
+												<td class="actionsCol">
+													<img src="images/icons/ic_video_call_circle.png"/>
+													<img src="images/icons/ic_phone_circle.png"/>
+												</td>
+											</tr>
+										</table>
+					
+										<p class="menuInfoContactDisplayName">Rex Anthony</p>
+										<p class="menuInfoContactUsername">@rexthonyy</p>
+										<p class="menuInfoContactDescription">Hello there, I am using GRing to make free phone calls and connect with the people that I care about.</p>
+
+										<h1 class="menuInfoContactHistoryHeader">History</h1>
+
+										
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_missed_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">4th November 2020 at 3:43pm</p>
+													<p class="listItemDesc">
+														Missed call
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_outgoing_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">29 September 2020 at 11:05pm</p>
+													<p class="listItemDesc">
+														Outgoing call
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_incoming_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">6th January 2019 at 3:43pm</p>
+													<p class="listItemDesc">
+														Incoming call
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_incoming_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">17th June 2020 at 2:09am</p>
+													<p class="listItemDesc">
+														Incoming call, 8 min 7 secs
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+
+										<table class="historyListItem">
+											<tr>
+												<td class="historyActionIconCol">
+													<img class="historyActionIcon" src="images/icons/ic_outgoing_call.png"/>
+												</td>
+												<td class="historyDescCol">
+													<p class="listItemName">31st October 2020 at 12:56pm</p>
+													<p class="listItemDesc">
+														Outgoing call, 1 min 36 secs
+													</p>
+												</td>
+												<td class="historyDelIconCol">
+													<img class="historyDelIcon" src="images/icons/ic_delete_white.png"/>
+												</td>
+											</tr>
+										</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--This is displayed when a tab is being loaded-->
+				<p id="contentProgressBar">Please wait...</p>
+			</div>
+		</div>
+
+		<p id="mainProgressBar">Please wait...</p>
+
+		<!-- The modal background -->
+		<div id="modalBackground">
+			<audio id="audioPlayer"></audio>
+
+			<div class="dialog dashboardModal" id="welcomeToGRingModal">
+				<h1 style='color:white;'>Welcome to <span style='color:blue;'>G</span>Ring</h1>" +
+				<p style='color:gray; margin-top: 16px; font-size: 1.2em;'>Your acount was created successfully! This is your dashboard where you can</p>
+				<ol style='color:gray; margin-top: 32px; font-size: 1.2em;'>
+					<li style='margin-top: 16px;'>View your call history</li>
+					<li style='margin-top: 16px;'>Manage your contacts</li>
+					<li style='margin-top: 16px;'>Make and receive calls for free</li>
+				</ol>
+				<button id='closeGRingModalButton'>Get started</button>
+			</div>
+			
+			<div class="dialog dashboardModal callModal" id="incomingCallModal">
+				<div class="callModalInfoContainer">
+					<img class="callingUserDisplayPic" id="incomingCallImage" src="images/icons/ic_avatar.png"/>
+					<p class="callingUserDisplayName" id="incomingCallDisplayName">
+						Rex Anthony
+					</p>
+					<p class="callingUsername" id="incomingCallUsername">
+						@rexthonyy
+					</p>
+					<p class="callingMsg">
+						Calling...
+					</p>
+				</div>
+				<div class="callModalActionContainer">
+					<table class="callActionTb">
+						<tr>
+							<td>
+								<img class="accept-call" id="answer-incoming-call-btn" src="images/icons/ic_phone_circle.png"/>
+							</td>
+							<td>
+								<img class="decline-call" id="decline-incoming-call-btn" src="images/icons/ic_decline_call.png"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="dialog dashboardModal callModal" id="outgoingCallModal">
+				<div class="callModalInfoContainer">
+					<img class="callingUserDisplayPic" src="images/icons/ic_avatar.png"/>
+					<p class="callingUserDisplayName">
+						Rex Anthony
+					</p>
+					<p class="callingUsername">
+						@rexthonyy
+					</p>
+					<p class="callingMsg">
+						Dialing...
+					</p>
+				</div>
+				<div class="callModalActionContainer">
+					<table class="callActionTb">
+						<tr>
+							<td>
+								<img id="stop-outgoing-call" class="decline-call" src="images/icons/ic_decline_call.png"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="dialog dashboardModal callModal" id="answeringCallModal">
+				<div class="callModalInfoContainer">
+					<img class="callingUserDisplayPic" src="images/icons/ic_avatar.png"/>
+					<p class="callingUserDisplayName">
+						Rex Anthony
+					</p>
+					<p class="callingUsername">
+						@rexthonyy
+					</p>
+					<p class="callingMsg">
+						00:01
+					</p>
+				</div>
+				<div class="callModalActionContainer">
+					<table class="callActionTb">
+						<tr>
+							<td>
+								<img class="decline-call" src="images/icons/ic_decline_call.png"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="dialog dashboardModal callModal" id="endedCallModal">
+				<div class="callModalInfoContainer">
+					<img class="callingUserDisplayPic" id="endedCallImage" src="images/icons/ic_avatar.png"/>
+					<p class="callingUserDisplayName" id="endedCallDisplayName">
+						Rex Anthony
+					</p>
+					<p class="callingUsername" id="endedCallUsername">
+						@rexthonyy
+					</p>
+					<p class="callingMsg">
+						Call ended
+					</p>
+				</div>
+				<div class="callModalActionContainer"></div>
+			</div>
+
+			<div class="dialog videoCallModal curborder-8px" id="outgoingVideoCallModal">
+				<div class="relative fullWidth fullHeight">
+					<div class="video-container curborder-8px">
+						<video id="outgoingVideoCallVideoElm"></video>
+					</div>
+					<div class="absolute fullWidth fullHeight">
+						<div class="callModalInfoContainer fullWidth fullHeight">
+							<img class="callingUserDisplayPic" id="outgoingVideoCallImage" src="images/icons/ic_avatar.png"/>
+							<p class="callingUserDisplayName whiteColor displayBlock" id="outgoingVideoCallDisplayName">
+								Rex Anthony
+							</p>
+							<p class="callingUsername mt-32px displayBlock" id="outgoingVideoCallUsername">
+								@rexthonyy
+							</p>
+							<p class="whiteColor callingMsg">
+								Calling...
+							</p>
+						</div>
+						<div class="callModalActionContainer">
+							<table class="callActionTb">
+								<tr>
+									<td>
+										<img id="stop-outgoing-video-call" class="decline-call" src="images/icons/ic_decline_call.png"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+				
+			<div class="dialog videoCallModal curborder-8px" id="answeringVideoCallModal">
+				<div class="relative fullWidth fullHeight">
+					<video class="absolute fullWidth fullHeight" id="answeringVideoCallLargeVideoElm"></video>
+					<video class="absolute width-150px height-150px bottom-32px right-32px" id="answeringVideoCallSmallVideoElm"></video>
+					<div class="absolute fullWidth fullHeight">
+						<div class="callModalInfoContainer"></div>
+						<div class="callModalActionContainer">
+							<table class="callActionTb">
+								<tr>
+									<td>
+										<img id="stop-answering-video-call" class="decline-call" src="images/icons/ic_decline_call.png"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

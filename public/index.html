@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Login</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="css/index.css"/>
+		<script type="text/javascript" src="js/consts.js"></script>
+		<script type="text/javascript" src="js/utility.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</head>
+
+	<body>
+		<div id="mainContainer">
+			<div id="formContainer">
+				<div id="topContainer">
+					<a href="index.html">
+						<p id="appName"><span style="color:blue;">G</span>Ring</p>
+					</a>
+				</div>
+
+				<div id="centerContainer">
+					<div id="form">
+						<h1>Sign In</h1>
+
+						<label for="emailInput">Email</label>
+						<div class="inputContainer" id="emailContainer">
+							<input type="email" id="emailInput" placeholder="Enter your email"/>
+						</div>
+
+						<label for="passwordInput">Password</label>
+						<div class="inputContainer" id="passwordContainer">
+							<input type="password" id="passwordInput" placeholder="Enter your password"/>
+						</div>
+						
+						<a id="forgottenPassword" href="forgottenPassword.html">FORGOTTEN PASSWORD</a>
+
+						<button id="loginButton">SIGN IN</button>
+
+						<p id="errorMessage">Incorrect login details</p>
+					</div>
+				</div>
+
+				<div id="bottomContainer">
+					<p id="noAccount">Don't have an account? <a href="signup.html">Sign up</a></p>
+				</div>
+			</div>
+			<div id="displayContainer"></div>
+		</div>
+
+		<p id="progressBar">Please wait...</p>
+	</body>
+</html>

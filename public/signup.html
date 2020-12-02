@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Sign up</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="css/signup.css"/>
+		<script type="text/javascript" src="js/consts.js"></script>
+		<script type="text/javascript" src="js/utility.js"></script>
+		<script type="text/javascript" src="js/signup.js"></script>
+	</head>
+
+	<body>
+		<div id="mainContainer">
+			<div id="formContainer">
+				<div id="topContainer">
+					<a href="index.html">
+						<p id="appName"><span style="color:blue;">G</span>Ring</p>
+					</a>
+				</div>
+
+				<div id="centerContainer">
+					<div id="form">
+						<h1>Sign Up</h1>
+
+						<label for="emailInput">Email</label>
+						<div class="inputContainer" id="emailContainer">
+							<input type="email" id="emailInput" placeholder="Enter your email"/>
+						</div>
+
+						<label for="password1Input">Password</label>
+						<div class="inputContainer" id="password1Container">
+							<input type="password" id="password1Input" placeholder="Enter your password"/>
+						</div>
+
+						<label for="password2Input">Re-enter Password</label>
+						<div class="inputContainer" id="password2Container">
+							<input type="password" id="password2Input" placeholder="Repeat your password"/>
+						</div>
+
+						<button id="loginButton">SIGN UP</button>
+
+						<p id="errorMessage">Incorrect login details</p>
+					</div>
+				</div>
+
+				<div id="bottomContainer">
+					<p id="noAccount">Already have an account? <a id="signUp" href="index.html">Sign in</a></p>
+				</div>
+			</div>
+			<div id="displayContainer"></div>
+		</div>
+
+		<p id="progressBar">Please wait...</p>
+	</body>
+</html>

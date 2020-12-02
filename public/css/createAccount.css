@@ -1,0 +1,106 @@
+#progressBar{
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+#mainContainer{
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	padding: 32px;
+}
+
+#photoSection{
+	margin-top: 32px;
+}
+
+img{
+	width: 200px;
+	height: 200px;
+	border: 1px solid gray;
+}
+
+img:hover{
+	cursor: pointer;
+}
+
+#uploadForm{
+	display: none;
+}
+
+#photoSection p{
+	margin-top: 16px;
+	color: gray;
+}
+
+#inputSection{
+	margin-top: 64px;
+	margin-bottom: 64px;
+}
+
+label{
+	color: white;
+	font-size: 0.9em;
+	font-weight: bold;	
+}
+
+.inputContainer{
+	margin: 8px 0px 16px 0px;
+}
+
+input{
+	width: 100%;
+	border: 1px solid rgb(64, 64, 64);
+	border-radius: 4px;
+	background-color: transparent;
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 8px;
+	padding: 16px 16px;
+}
+
+input:focus{
+	border: 1px solid blue;
+}
+
+#atSign{
+	float: left;
+	background-color: rgb(32, 32, 32);
+	color: gray;
+	vertical-align: middle;
+	width: 40px;
+	padding: 16px;
+}
+
+#usernameInput{
+	float: left;
+	width: calc(100% - 40px);
+}
+
+#loginButton{
+	margin-top: 32px;
+	width: 100%;
+	padding: 16px;
+	background-color: blue;
+	color: white;
+	border: 0;
+	border-radius: 4px;
+	letter-spacing: 2px;
+}
+
+#loginButton:hover{
+	cursor: pointer;
+	background-color: rgb(0, 0, 200);
+}
+
+#errorMessage{
+	display: none;
+	color: red;
+	text-align: center;
+	margin-top: 8px;
+}

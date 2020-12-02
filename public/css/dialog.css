@@ -1,0 +1,121 @@
+#modalBackground {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.dashboardModal{
+	display: none;
+	background-color: rgb(2, 2, 2);
+	border-radius: 8px;
+	padding: 32px;
+}
+
+.videoCallModal{
+	display: none;
+	background-color: rgb(2, 2, 2);
+	width: 600px;
+	height: 95vh;
+	font-size: 1.2em;
+}
+
+.callModal{
+	display: none;
+	width: 450px;
+	height: 95vh;
+	font-size: 1.2em;
+}
+
+.callModal:nth-child(1){
+	display: none;
+}
+
+.callModalInfoContainer{
+	height: 80%;
+	text-align: center;
+	color: white;
+}
+
+.callModalActionContainer{
+	height: 20%;
+}
+
+.callingMsg{
+	margin-top: 32px;
+}
+
+.callingUserDisplayName{
+	font-size: 1.5em;
+	margin-top: 32px;
+}
+
+.callingUsername{
+	color: gray;
+	margin-top: 8px;
+}
+
+.callingUserDisplayPic{
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	margin-top: 44px;
+}
+
+.callActionTb{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.accept-call, .decline-call{
+	width: 64px;
+	height: 64px;
+	border-radius: 32px;
+}
+
+.accept-call:hover{
+	cursor: pointer;
+	content: url("../images/icons/ic_phone_circle_hover.png");
+}
+
+.decline-call:hover{
+	cursor: pointer;
+	content: url("../images/icons/ic_decline_call_hover.png");
+}
+
+.video-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%; 
+	overflow: hidden;
+  }
+  
+  .video-container video {
+	/* Make video to at least 100% wide and tall */
+	min-width: 100%; 
+	min-height: 100%; 
+	
+	/* Setting width & height to auto prevents the browser from stretching or squishing the video */
+	width: auto;
+	height: auto;
+	
+	/* Center the video */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+  }

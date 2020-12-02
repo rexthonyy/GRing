@@ -1,0 +1,93 @@
+#progressBar{
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+#mainContainer{
+	display: block;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	text-align: center;
+	width: 400px;
+}
+
+#appName{
+	font-size: 1.8em;
+	font-weight: bold;
+	color: white;
+}
+
+#verificationContainer{
+	margin-top: 32px;
+	background-color: black;
+	border-radius: 4px;
+}
+
+#formContainer{
+	padding: 24px;
+}
+
+#infoParagraph{
+	margin-top: 16px;
+	color: gray;
+}
+
+#codeContainer{
+	margin-top: 24px;
+}
+
+input{
+	width: 100%;
+	border: 1px solid rgb(64, 64, 64);
+	border-radius: 4px;
+	background-color: transparent;
+	color: white;
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 8px;
+	padding: 16px 16px;
+}
+
+input:focus{
+	border: 1px solid blue;
+}
+
+#verifyButton{
+	margin-top: 32px;
+	width: 100%;
+	padding: 16px;
+	background-color: blue;
+	color: white;
+	border: 0;
+	border-radius: 4px;
+	letter-spacing: 2px;
+}
+
+#verifyButton:hover{
+	cursor: pointer;
+	background-color: rgb(0, 0, 200);
+}
+
+#errorMessage{
+	display: none;
+	color: red;
+	text-align: center;
+	margin-top: 8px;
+}
+
+#resendCode{
+	padding: 32px 0px;
+	border-top: 0.1px solid rgb(18, 18, 18);
+	color: gray;
+}
+
+a:link, a:visited{
+	color: blue;
+}

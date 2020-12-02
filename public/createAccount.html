@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Create Account</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="css/createAccount.css"/>
+		<script type="text/javascript" src="js/consts.js"></script>
+		<script type="text/javascript" src="js/utility.js"></script>
+		<script type="text/javascript" src="js/createAccount.js"></script>
+	</head>
+
+	<body>
+		<div id="mainContainer">
+			<h1 style="color:white;">Please fill in your details</h1>
+			<div id="photoSection">
+				<table class="fullWidth">
+					<tr>
+						<td class="col-30-pp">
+							<img id="photo" class="centerVertical" src="images/icons/ic_avatar.png"/>
+						</td>
+						<td class="col-70-pp">
+							<p id="removeImage" style="text-decoration: underline; color: blue;" class="centerVertical ml-32px hover">Remove</p>
+						</td>
+					</tr>
+				</table>
+				<form id="uploadForm" method="POST" enctype="multipart/form-data">
+					<input type="file" name="userImage" id="uploadFile" accept="image/jpg, image/jpeg, image/png, image/gif"/>
+					<input type="hidden" id="userIdInput" name="userId" />
+				</form>
+				<p>Upload your photo (jpg or png)</p>
+			</div>
+			<div id="inputSection">
+				<label for="nameInput">Display name</label>
+				<div class="inputContainer" id="nameContainer">
+					<input type="text" id="nameInput" placeholder="Enter your name"/>
+				</div>
+
+				<label for="usernameInput">Username</label>
+				<div class="inputContainer" id="usernameContainer">
+					<span id="atSign">@</span><input type="text" id="usernameInput" placeholder="Enter your @username"/>
+				</div>
+
+				<input type="button" id="loginButton" value="CREATE ACCOUNT"/>
+
+				<p id="errorMessage">Incorrect login details</p>
+			</div>
+		</div>
+
+		<p id="progressBar">Please wait...</p>
+	</body>
+</html>
