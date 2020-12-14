@@ -1,0 +1,384 @@
+*{
+	padding: 0;
+	margin: 0;
+	outline: none;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-size: small;
+	background-color: rgb(18, 18, 18);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(60, 60, 60, 0.5); 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(60, 60, 60, 1); 
+}
+
+.rex-border{
+	border: 1px solid blue;
+}
+
+.rex-no-border{
+	border: 0;
+}
+
+.rex-display-gone{
+	display: none;
+}
+
+.rex-display-block{
+	display: block;
+}
+
+.rex-display-inline-block{
+	display: inline-block;
+}
+
+.rex-display-grid2{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto;
+}
+
+.rex-display-flex{
+	display: flex;
+}
+
+.rex-center-flex-items{
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.rex-center-vertical-flex-items{
+	flex-direction: column;
+	justify-content: center;
+}
+
+.rex-color-white{
+	color: white;
+}
+
+.rex-color-blue{
+	color: blue;
+}
+
+.rex-color-gray{
+	color: gray;
+}
+
+.rex-color-red{
+	color: red;
+}
+
+.rex-background-red{
+	background-color: red;
+}
+
+.rex-background-blue{
+	background-color: blue;
+}
+
+.rex-background-green{
+	background-color: green;
+}
+
+.rex-background-transparent{
+	background-color: transparent;
+}
+
+.rex-fs-large{
+	font-size: 1.8em;
+}
+
+.rex-fs-normal{
+	font-size: 1.2em;
+}
+
+.rex-weight-bold{
+	font-weight: bold;
+}
+
+.rex-center-div-relative{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.rex-vertical-align{
+	vertical-align: middle;
+}
+
+.rex-center-div-horizontal{
+	margin: 0 auto;
+}
+
+.rex-height-10vh{
+	height: 10vh;
+}
+
+.rex-height-100vh{
+	height: 100vh;
+}
+
+.rex-height-20vh{
+	height: 20vh;
+}
+
+.rex-height-10pp{
+	height: 10%;
+}
+
+.rex-height-20pp{
+	height: 20%;
+}
+
+.rex-height-30pp{
+	height: 30%;
+}
+
+.rex-height-50pp{
+	height: 50%;
+}
+
+.rex-height-90pp{
+	height: 90%;
+}
+
+.rex-height-24px{
+	height: 24px;
+}
+
+.rex-height-32px{
+	height: 32px;
+}
+
+.rex-height-60px{
+	height: 60px;
+}
+
+.rex-height-80px{
+	height: 80px;
+}
+
+.rex-width-10pp{
+	width: 10%;
+}
+
+.rex-width-30pp{
+	width: 30%;
+}
+
+.rex-width-50pp{
+	width: 50%;
+}
+
+.rex-width-70pp{
+	width: 70%;
+}
+
+.rex-width-80pp{
+	width: 80%;
+}
+
+.rex-width-90pp{
+	width: 90%;
+}
+
+.rex-width-100pp{
+	width: 100%;
+}
+
+.rex-width-24px{
+	width: 24px;
+}
+
+.rex-width-32px{
+	width: 32px;
+}
+
+.rex-width-60px{
+	width: 60px;
+}
+
+.rex-width-80px{
+	width: 80px;
+}
+
+.rex-min-width-80px{
+	min-width: 80px;
+}
+
+.rex-min-width-100px{
+	min-width: 100px;
+}
+
+.rex-min-width-160px{
+	min-width: 160px;
+}
+
+.rex-space-2pp{
+	height: 2%;
+}
+
+.rex-space-8px{
+	padding: 4px;
+}
+
+.rex-space-16px{
+	padding: 8px;
+}
+
+.rex-space-32px{
+	padding: 16px;
+}
+
+.rex-space-10pp{
+	height: 10%;
+}
+
+.rex-curDiv-30px{
+	border-radius: 30px;
+}
+
+.rex-curDiv-32px{
+	border-radius: 32px;
+}
+
+.rex-curDiv-40px{
+	border-radius: 40px;
+}
+
+.rex-curDiv-64px{
+	border-radius: 64px;
+}
+
+.rex-float-left{
+	float: left;
+}
+
+.rex-float-right{
+	float: right;
+}
+
+.rex-pad8px{
+	padding: 8px;
+}
+
+.rex-pad16px{
+	padding: 16px;
+}
+
+.rex-pr-16px{
+	padding-right: 16px;
+}
+
+.rex-pl-16px{
+	padding-left: 16px;
+}
+
+.rex-pt-8px{
+	padding-top: 8px;
+}
+
+.rex-pb-8px{
+	padding-bottom: 8px;
+}
+
+.rex-mt-2px{
+	margin-top: 2px;
+}
+
+.rex-mt-4px{
+	margin-top: 4px;
+}
+
+.rex-mt-8px{
+	margin-top: 8px;
+}
+
+.rex-mt-16px{
+	margin-top: 16px;
+}
+
+.rex-mt-8px{
+	margin-top: 8px;
+}
+
+.rex-ml-8px{
+	margin-left: 8px;
+}
+
+.rex-ml-16px{
+	margin-left: 16px;
+}
+
+.rex-mr-8px{
+	margin-right: 8px;
+}
+
+.rex-mb-8px{
+	margin-bottom: 8px;
+}
+
+.rex-hover{
+	cursor: pointer;
+}
+
+.rex-text-overflow-ellipses{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.rex-selectable-item-background:hover, .rex-item-selected{
+	background-color: rgb(20, 20, 20);
+	transition: all .3s;
+}
+
+.rex-overflow-auto{
+	overflow: auto;
+}
+
+.rex-box-shadow1{
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.rex-z-index1{
+	z-index: 7;
+}
+
+.rex-dropdown{
+	position: relative;
+	display: inline-block;
+}
+
+.rex-dropdown-content{
+	position: absolute;
+	left: -250%;
+	top: -50%;
+}
+
+.rex-center-text{
+	text-align: center;
+}

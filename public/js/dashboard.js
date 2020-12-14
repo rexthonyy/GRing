@@ -1,135 +1,90 @@
+var menus;
+var activeMenuIndex = 0;
 var connection;
 
-var tabs;
+window.onload = () => {
+	// getMainContainer().style.display = "none";
+	// getMainProgressContainer().style.display = "block";
+	// getDisplayProgressContainer().style.display = "none";
+	//getDisplayContainers()[0].style.display = "block";
 
-var activeTabIndex = 0;
+	//setup();
 
-var dialogs;
-
-window.onload = function(){
 	setup()
 	.then(() => {
 		checkNewUserLogin();
-		handleInputListener();
 		handleClickListeners();
 	}).catch(err => {
 		console.log(err);
 	});
 }
 
-function setup(){
+function setup() {
 	return new Promise((resolve, reject) => {
 		connection = new Connection((id) => {
 			console.log("peer id : " + id);
 
-			setupTabs();
-			setupDialogs();
+			setupMenus();
 			resolve();
 		});
 	});
-	
 }
 
-function setupTabs(){
-	tabs = [
-		new DialerTab(0),
-		new RecentTab(1),
-		new ContactsTab(2),
-		new LogoutTab(3)
+function setupMenus(){
+	menus = [
+		new DialerMenu(0),
+		new RecentMenu(1),
+		new ContactsMenu(2),
+		new LogoutMenu(3)
 	];
-}
-
-function setupDialogs(){
-	dialogs = [
-		new WelcomeDialog(0),
-		new IncomingCallDialog(1),
-		new OutgoingCallDialog(2),
-		new AnsweringCallDialog(3),
-		new EndedCallDialog(4),
-		new OutgoingVideoCallDialog(5),
-		new AnsweringVideoCallDialog(6)
-	];
-}
-
-function tabCallback(data){
-	tabs[data.index].tabCallback(data);
-}
-
-function dialogCallback(data){
-	dialogs[data.index].dialogCallback(data);
 }
 
 function checkNewUserLogin(){
-	if(sessionStorage.getItem("isNewUser") == 1){
-		sessionStorage.setItem("isNewUser", 0);
-		dialogs[0].show();
-	}
+
 }
 
 function handleClickListeners(){
-	handleSideNavClickListener();
-	handleDialerDisplayClickListener();
-}
-
-function handleSideNavClickListener(){
-	let sideNavTabs = getSideNavTabs();
-	for(let i = 0; i < sideNavTabs.length; i++){
-		sideNavTabs[i].onclick = () => {
-			if(activeTabIndex != i){
-				tabs[activeTabIndex].close();
-				tabs[i].click();
-				activeTabIndex = i;
+	let sidebarMenus = getSidebarMenus();
+	for(let i = 0; i < sidebarMenus.length; i++){
+		sidebarMenus[i].onclick = () => {
+			if(activeMenuIndex != i){
+				menus[activeMenuIndex].close();
+				menus[i].click();
+				activeMenuIndex = i;
 			}
 		};
 	}
-	tabs[activeTabIndex].click();
+	menus[activeMenuIndex].click();
 }
 
-function handleInputListener(){
-	getUsernameInput().addEventListener("input", (e) => {
-		let username = e.target.value;
-
-		if(username.length > 0){
-			if(username.indexOf('@') != 0){				
-				getUsernameInput().value = '@' + username;
-			}
-		}
-	});
+function menuCallback(data){
+	menus[data.index].menuCallback(data);
 }
 
-function handleDialerDisplayClickListener(){
-	getVoiceCallBtn().onclick = () => {
-		let username = getUsernameInput().value.slice(1);
-		call(username, { video: false, audio: true });
-	};
-
-	getVideoCallBtn().onclick = () => {
-		let username = getUsernameInput().value.slice(1);
-		call(username, { video: true, audio: true });
-	};
-}
-
-function showError(error, duration = 3000){
-	let errorMessage = getErrorMessages()[0];
-	errorMessage.textContent = error;
-	errorMessage.style.display = "block";
-	wait(duration, () => {
-		errorMessage.style.display = "none";
-	});
-}
-
-function call(username, mediaData){
-	if(username.length > 0){
-		if(isUsernameValid(username)){
-			connection.startConnection({
-				userId : sessionStorage.getItem("userId"),
-				username : username,
-				mediaData : mediaData
-			});
-		}else{
-			showError("Invalid username");
-		}
-	}else{
-		showError("Please enter a username")
+function setgup(){
+	let dropdownMenu = document.getElementById("dropdownBtn");
+	dropdownMenu.onclick = (e) => {
+		stopClickPropagation(e);
+		closeAllDropdowns();
+		openDropdown(document.getElementById("testDropdown"));
 	}
+	let dropdownMenu1 = document.getElementById("dropdownBtn1");
+	dropdownMenu1.onclick = (e) => {
+		stopClickPropagation(e);
+		closeAllDropdowns();
+		openDropdown(document.getElementById("testDropdown1"));
+	}
+	let dropdownMenu2 = document.getElementById("dropdownBtn2");
+	dropdownMenu2.onclick = (e) => {
+		stopClickPropagation(e);
+		closeAllDropdowns();
+		openDropdown(document.getElementById("testDropdown2"));
+	}
+	
+	window.onclick = e => {
+		if(!e.target.matches('.rex-dropdown-btn')){
+			closeAllDropdowns();
+		}
+	};
 }
+

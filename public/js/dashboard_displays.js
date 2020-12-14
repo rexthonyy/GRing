@@ -1,60 +1,91 @@
 class Display {
-    constructor(tabIndex){
-        this.tabIndex = tabIndex;
+    constructor(displayIndex){
+        this.displayIndex = displayIndex;
     }
 
-    static OpenMainView(){
-		getMainContainer().style.display = "block";
-		getMainProgressBar().style.display = "none";
+    static ShowMainProgressContainer(){
+		getMainContainer().style.display = "none";
+		getMainProgressContainer().style.display = "block";
 	}
 
-	static CloseMainView(){
-		getMainContainer().style.display = "none";
-		getMainProgressBar().style.display = "block";
+	static HideMainProgressContainer(){
+		getMainContainer().style.display = "block";
+		getMainProgressContainer().style.display = "none";
     }
     
-    static OpenDisplayView(){
-        getDisplayContainer().style.display = "block";
-		getDisplayProgressBar().style.display = "none";
+    static ShowDisplayProgressContainer(){
+        getDisplayProgressContainer().style.display = "block";
     }
 
-    static CloseDisplayView(){
-        getDisplayContainer().style.display = "none";
-		getDisplayProgressBar().style.display = "block";
+    static HideDisplayProgressContainer(){
+		getDisplayProgressContainer().style.display = "none";
     }
 
-    static CloseAllDisplayTabViews(){
-        let displayTabs = getDisplayTabs();
-        for(let i = 0; i < displayTabs.length; i++){
-            displayTabs[i].style.display = "none";
+    static CloseAllDisplayContainers(){
+        let displayContainer = getDisplayContainers();
+        for(let i = 0; i < displayContainer.length; i++){
+            displayContainer[i].style.display = "none";
         }
     }
 
-    openDisplayTabView(){
-        getDisplayTabs()[this.tabIndex].style.display = "block";
+    static ShowDisplayContainer(displayIndex){
+        getDisplayContainers()[displayIndex].style.display = "block";
     }
     
-    closeDisplayTabView(){
-        getDisplayTabs()[this.tabIndex].style.display = "none";
+    static HideDisplayContainer(displayIndex){
+        getDisplayContainers()[displayIndex].style.display = "none";
     }
 
 
-    setup(){}
-}
-
-class DialerDisplay extends Display {
-	constructor(tabIndex){
-		super(tabIndex);
-	}
-
-	setup(){
-		Display.OpenDisplayView();
-		this.openDisplayTabView();
-		Display.OpenMainView();
+    setup(){
+        Display.HideMainProgressContainer();
+        Display.ShowDisplayContainer(this.displayIndex);
     }
 
     close(){
-        Display.CloseAllDisplayTabViews();
-		Display.CloseDisplayView();
+        Display.HideDisplayContainer(this.displayIndex);
+    }
+}
+
+class DialerDisplay extends Display {
+	constructor(displayIndex){
+		super(displayIndex);
+	}
+
+	setup(data){
+        super.setup();
+    }
+
+    close(){
+        super.close();
+    }
+}
+
+class RecentDisplay extends Display {
+    constructor(displayIndex){
+        super(displayIndex);
+    }
+
+    setup(data){
+        super.setup();
+    }
+
+    close(){
+        super.close();
+    }
+}
+
+
+class ContactsDisplay extends Display {
+    constructor(displayIndex){
+        super(displayIndex);
+    }
+
+    setup(data){
+        super.setup();
+    }
+
+    close(){
+        super.close();
     }
 }
