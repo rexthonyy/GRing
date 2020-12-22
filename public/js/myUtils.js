@@ -27,3 +27,39 @@ function wait(time, func){
 		func();
 	}, time);
 }
+
+async function sendPostRequest(url, data){
+	let response = await fetch(url, {
+		method: "POST",
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	});
+
+	let json = await response.json();
+
+	return json;
+}
+
+function isUsernameValid(username){
+	if(username.length >= 3){
+		const re = /^\w+$/;
+	    return re.test(username);
+	}else{
+		return false;
+	}
+}
+
+function addVideoStream(videoElm, stream){
+    videoElm.srcObject = stream;
+    videoElm.addEventListener('loadedmetadata', () => {
+        videoElm.play();
+    });
+}
+
+function stopStream(stream){
+	stream.getTracks().forEach(function(track) {
+		track.stop();
+	});
+}

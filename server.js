@@ -214,7 +214,6 @@ io.on('connection', socket => {
                     }
 
                     socket.emit('socket-response', { type: 'connectingToCall', connectionId: connectionId, user: doc });
-
                 });
 
                 
@@ -233,7 +232,7 @@ io.on('connection', socket => {
 
                 socket.on('disconnect', () => {
                     clearInterval(timeoutIds[connectionId]);
-                    io.to(connectionId).emit('socket-response', { type: 'notifyUserDisconnected', connectionId: connectionId });
+                    socket.broadcast.to(connectionId).emit('socket-response', { type: 'notifyUserDisconnected', connectionId: connectionId });
                     endCall(connectionId);
                 });
             });
@@ -251,6 +250,13 @@ io.on('connection', socket => {
             socket.broadcast.to(connectionId).emit('socket-response', { type: 'contactFailedToPickupYourCall' });
             endCall(connectionId);
         }, 15 * 1000);
+
+        //for when the receiver refreshes the page
+        socket.on('disconnect', () => {
+            clearInterval(timeoutIds[connectionId]);
+            socket.broadcast.to(connectionId).emit('socket-response', { type: 'notifyUserDisconnected', connectionId: connectionId });
+            endCall(connectionId);
+        });
     });
 
     socket.on('answer-call', (peerId, connectionId) => {

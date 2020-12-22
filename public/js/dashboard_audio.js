@@ -18,4 +18,18 @@ class MyAudio {
         this.myAudio[key].pause();
         this.myAudio[key].currentTime = 0;
    }
+
+   setLoopKey(key){
+        this.loopKey = key;
+   }
+
+   playAudioInLoop(){
+        audio.playAudio(audio.loopKey, audio.playAudioInLoop);
+   }
+
+   stopAllAudio(){
+        for(const [key, value] of Object.entries(this.myAudio)){
+            this.stopAudio(key);
+        }
+   }
 }

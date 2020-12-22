@@ -11,9 +11,12 @@
 		<script src="js/peerjs.js"></script>
 		<script type="text/javascript" src="js/myUtils.js"></script>
 		<script type="text/javascript" src="js/consts.js"></script>
+		<script type="text/javascript" src="js/dashboard_audio.js"></script>
+		<script type="text/javascript" src="js/dashboard_connection_stages.js"></script>
 		<script type="text/javascript" src="js/dashboard_connection.js"></script>
 		<script type="text/javascript" src="js/dashboard_getters.js"></script>
 		<script type="text/javascript" src="js/dashboard_displays.js"></script>
+		<script type="text/javascript" src="js/dashboard_dialogs.js"></script>
 		<script type="text/javascript" src="js/dashboard_menus.js"></script>
 		<script type="text/javascript" src="js/dashboard.js"></script>
 	</head>
@@ -58,7 +61,7 @@
 							<input type="text" class="rex-width-100pp rex-no-border custom-border-bottom1 rex-background-transparent rex-color-white rex-fs-normal rex-pr-16px rex-pl-16px rex-pt-8px rex-pb-8px custom-bottom-border-color-focus1" placeholder="Search"/>
 						</div>
 
-						<div class="rex-height-90pp rex-overflow-auto">
+						<div id="userDialerContainer" class="rex-height-90pp rex-overflow-auto">
 							<div class="rex-pad16px rex-hover rex-selectable-item-background">
 								<div class="custom-dialer-user-grid">
 									<div>
@@ -133,13 +136,13 @@
 						</div>
 						<div class="rex-height-90pp rex-display-flex rex-center-flex-items">
 							<div class="rex-width-50pp">
-								<input type="text" class="rex-width-100pp rex-no-border rex-background-transparent rex-color-white rex-fs-large rex-pr-16px rex-pl-16px rex-pt-8px rex-pb-8px rex-center-text" placeholder="@username"/>
+								<input type="text" id="usernameDialerInput" class="rex-width-100pp rex-no-border rex-background-transparent rex-color-white rex-fs-large rex-pr-16px rex-pl-16px rex-pt-8px rex-pb-8px rex-center-text" placeholder="@username"/>
 								<div class="rex-display-grid2 rex-width-80pp rex-center-div-horizontal rex-mt-16px">
-									<div class="rex-pad16px"><button class="rex-width-100pp rex-hover rex-pad16px custom-button-primary rex-center-text">Video call</button></div>
-									<div class="rex-pad16px"><button class="rex-width-100pp rex-hover rex-pad16px custom-button-primary rex-center-text">Voice call</button></div>
+									<div class="rex-pad16px"><button id="videoCallDialerBtn" class="rex-width-100pp rex-hover rex-pad16px custom-button-primary rex-center-text">Video call</button></div>
+									<div class="rex-pad16px"><button id="voiceCallDialerBtn" class="rex-width-100pp rex-hover rex-pad16px custom-button-primary rex-center-text">Voice call</button></div>
 								</div>
 								<div class="rex-space-8px"></div>
-								<p class="rex-fs-normal rex-color-red rex-center-text rex-display-gone">@williams123 is invalid</p>
+								<p id="usernameDialerInputError" class="rex-fs-normal rex-color-red rex-center-text rex-display-gone">@williams123 is invalid</p>
 							</div>
 						</div>
 					</div>
@@ -171,6 +174,134 @@ b
 		</div>
 		<div id="mainProgressContainer" class="rex-height-100vh rex-display-gone">
 			<span class="rex-center-div-relative rex-color-white">Please wait...</span>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Modal background -->
+		<div id="modalBackground" class="rex-modal-background rex-display-flex rex-center-flex-items">
+
+			<!-- Welcome new user -->
+			<div id="welcomeModal" class="custom-modal rex-color-white rex-border-blue custom-background-color1 rex-curDiv-8px rex-pad32px">
+				<h1 class="rex-fs-large">Welcome to <span class="rex-color-blue">G</span>Ring</h1>
+				<div class="rex-color-gray rex-mt-16px rex-fs-normal">
+					<p>Your acount was created successfully! This is your dashboard where you can</p>
+					<ol class="rex-mt-32px">
+						<li class="rex-mt-32px">View your call history</li>
+						<li class="rex-mt-32px">Manage your contacts</li>
+						<li class="rex-mt-32px">Make and receive calls for free</li>
+					</ol>
+				</div>	
+				<button id="welcomeModalGetStartedBtn" class="rex-mt-32px rex-width-100pp custom-button-primary">Get started</button>
+			</div>
+
+			<!-- video call initiator -->
+			<div id="videoCallInitiatorModal" class="custom-modal rex-width-600px rex-height-90pp custom-background-color1 rex-curDiv-8px rex-position-relative">
+				<div class="custom-video-container rex-curDiv-16px">
+					<video id="videoCallInitiatorVideoElement" class="custom-video-call-element"></video>
+				</div>
+				<div class="rex-height-100pp rex-pad32px rex-center-absolute-div-horizontal">
+					<div class="rex-height-70pp rex-center-text ">
+						<div class="rex-space-32px"></div>
+						<img id="videoCallInitiatorUserDisplayPic" class="rex-width-100px rex-height-100px rex-curDiv-50px" src="images/icons/ic_avatar.png"/>
+						<p id="videoCallInitiatorUserDisplayName" class="rex-color-white rex-fs-normal rex-mt-32px">
+							Rex Anthony Chukwuma
+						</p>
+						<p id="videoCallInitiatorUsername" class="rex-color-gray rex-fs-normal rex-mt-32px">
+							@rexthonyy
+						</p>
+						<p class="rex-color-white rex-fs-normal rex-mt-32px">
+							Calling...
+						</p>
+					</div>
+					<div class="rex-height-30pp rex-display-flex rex-center-flex-items">
+						<img id="videoInitiatorCallStopCallBtn" class="rex-width-64px rex-height-64px rex-curDiv-32px custom-button-secondary" src="images/icons/ic_decline_call.png"/>
+					</div>
+				</div>
+			</div>
+
+			<!-- end call connection stage -->
+			<div id="callEndedModal" class="custom-modal rex-width-600px rex-height-90pp custom-background-color1 rex-curDiv-8px rex-position-relative">
+				<div class="rex-height-100pp rex-pad32px rex-center-absolute-div-horizontal">
+					<div class="rex-center-text">
+						<div class="rex-space-32px"></div>
+						<img id="callEndedUserDisplayPic" class="rex-width-100px rex-height-100px rex-curDiv-50px" src="images/icons/ic_avatar.png"/>
+						<p id="callEndedUserDisplayName" class="rex-color-white rex-fs-normal rex-mt-32px">
+							Rex Anthony Chukwuma
+						</p>
+						<p id="callEndedUsername" class="rex-color-gray rex-fs-normal rex-mt-32px">
+							@rexthonyy
+						</p>
+						<p class="rex-color-white rex-fs-normal rex-mt-32px">
+							Call Ended
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- incoming call stage -->
+			<div id="incomingCallModal" class="custom-modal rex-width-600px rex-height-90pp custom-background-color1 rex-curDiv-8px rex-position-relative">
+				<div class="rex-height-100pp rex-width-600px rex-pad32px rex-center-absolute-div-horizontal">
+					<div class="rex-height-70pp rex-center-text">
+						<div class="rex-space-32px"></div>
+						<img id="incomingCallUserDisplayPic" class="rex-width-100px rex-height-100px rex-curDiv-50px" src="images/icons/ic_avatar.png"/>
+						<p id="incomingCallUserDisplayName" class="rex-color-white rex-fs-normal rex-mt-32px">
+							Rex Anthony Chukwuma
+						</p>
+						<p id="incomingCallUsername" class="rex-color-gray rex-fs-normal rex-mt-32px">
+							@rexthonyy
+						</p>
+						<p class="rex-color-white rex-fs-normal rex-mt-32px">
+							Calling...
+						</p>
+					</div>
+					<div class="rex-height-30pp rex-display-grid2">
+						<div class="rex-display-flex rex-center-flex-items">
+							<img id="incomingCallAnswerCallBtn" class="rex-width-64px rex-height-64px rex-curDiv-32px custom-button-tertiary" src="images/icons/ic_phone_circle.png"/>
+						</div>
+						<div class="rex-display-flex rex-center-flex-items">
+							<img id="incomingCallStopCallBtn" class="rex-width-64px rex-height-64px rex-curDiv-32px custom-button-secondary" src="images/icons/ic_decline_call.png"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- answering video call stage -->
+			<div id="answeringVideoCallModal" class="custom-modal rex-width-600px rex-height-90pp custom-background-color1 rex-curDiv-8px rex-position-relative">
+				<div class="custom-video-container rex-curDiv-16px">
+					<video id="answeringVideoCallVideoElement1" class="custom-video-call-element"></video>
+				</div>
+				<div class="custom-video-container1 rex-curDiv-16px rex-margin32px rex-border">
+					<video id="answeringVideoCallVideoElement2" class="custom-video-call-element1"></video>
+				</div>
+				
+				<div class="rex-height-100pp rex-pad32px rex-center-absolute-div-horizontal">
+					<div class="rex-height-70pp rex-center-text "></div>
+					<div class="rex-height-30pp rex-display-flex rex-center-flex-items">
+						<img id="answeringVideoCallStopCallBtn" class="rex-width-64px rex-height-64px rex-curDiv-32px custom-button-secondary" src="images/icons/ic_decline_call.png"/>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

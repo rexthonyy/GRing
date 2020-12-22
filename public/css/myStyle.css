@@ -37,6 +37,10 @@ body{
 	border: 1px solid blue;
 }
 
+.rex-border-blue{
+	border: 1px solid blue;
+}
+
 .rex-no-border{
 	border: 0;
 }
@@ -133,6 +137,13 @@ body{
 	margin: 0 auto;
 }
 
+.rex-center-absolute-div-horizontal{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
 .rex-height-10vh{
 	height: 10vh;
 }
@@ -161,8 +172,16 @@ body{
 	height: 50%;
 }
 
+.rex-height-70pp{
+	height: 70%;
+}
+
 .rex-height-90pp{
 	height: 90%;
+}
+
+.rex-height-100pp{
+	height: 100%;
 }
 
 .rex-height-24px{
@@ -177,8 +196,20 @@ body{
 	height: 60px;
 }
 
+.rex-height-64px{
+	height: 64px;
+}
+
 .rex-height-80px{
 	height: 80px;
+}
+
+.rex-height-90px{
+	height: 90px;
+}
+
+.rex-height-100px{
+	height: 100px;
 }
 
 .rex-width-10pp{
@@ -221,8 +252,24 @@ body{
 	width: 60px;
 }
 
+.rex-width-64px{
+	width: 64px;
+}
+
 .rex-width-80px{
 	width: 80px;
+}
+
+.rex-width-90px{
+	width: 90px;
+}
+
+.rex-width-100px{
+	width: 100px;
+}
+
+.rex-width-600px{
+	width: 600px;
 }
 
 .rex-min-width-80px{
@@ -257,6 +304,14 @@ body{
 	height: 10%;
 }
 
+.rex-curDiv-8px{
+	border-radius: 8px;
+}
+
+.rex-curDiv-16px{
+	border-radius: 16px;
+}
+
 .rex-curDiv-30px{
 	border-radius: 30px;
 }
@@ -267,6 +322,10 @@ body{
 
 .rex-curDiv-40px{
 	border-radius: 40px;
+}
+
+.rex-curDiv-50px{
+	border-radius: 50px;
 }
 
 .rex-curDiv-64px{
@@ -281,12 +340,24 @@ body{
 	float: right;
 }
 
+.rex-margin16px{
+	margin: 16px;
+}
+
+.rex-margin32px{
+	margin: 32px;
+}
+
 .rex-pad8px{
 	padding: 8px;
 }
 
 .rex-pad16px{
 	padding: 16px;
+}
+
+.rex-pad32px{
+	padding: 32px;
 }
 
 .rex-pr-16px{
@@ -323,6 +394,14 @@ body{
 
 .rex-mt-8px{
 	margin-top: 8px;
+}
+
+.rex-mt-16px{
+	margin-top: 16px;
+}
+
+.rex-mt-32px{
+	margin-top: 32px;
 }
 
 .rex-ml-8px{
@@ -381,4 +460,22 @@ body{
 
 .rex-center-text{
 	text-align: center;
+}
+
+.rex-modal-background{
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.rex-position-relative{
+	position: relative;
+}
+
+.rex-position-absolute{
+	position: absolute;
 }
