@@ -18,7 +18,7 @@ const io = socketio(server);
 
 const PORT = process.env.PORT || process.env.HTTP_PORT;
 
-server.listen(process.env.HTTP_PORT, () => console.log(`http server running on port ${process.env.HTTP_PORT}`));
+server.listen(PORT, () => console.log(`http server running on port ${PORT}`));
 
 PeerServer({ 
     port: process.env.PEERJS_PORT, 
@@ -62,7 +62,8 @@ const dashboardRouter = require("./routes/dashboard");
 app.use("/dashboard", dashboardRouter);
 
 //database connection
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+
+mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to mongodb Database'));

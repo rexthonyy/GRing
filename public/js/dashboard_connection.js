@@ -4,7 +4,7 @@ class Connection {
         
         this.myPeer = new Peer({
             host: '/',
-            port: 8000,
+            port: 443,
             path: '/',
             secure: true
         });
