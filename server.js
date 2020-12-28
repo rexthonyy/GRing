@@ -22,11 +22,7 @@ server.listen(process.env.HTTP_PORT, () => console.log(`http server running on p
 
 PeerServer({ 
     port: process.env.PEERJS_PORT, 
-    path: '/',
-    ssl: {
-        key: fs.readFileSync('./certificates/key.pem', 'utf8'),
-        cert: fs.readFileSync('./certificates/cert.pem', 'utf8')
-    }
+    path: '/'
 });
 
 app.get('/favicon.ico', (req, res) => {
