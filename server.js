@@ -1,4 +1,4 @@
-//if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const fs = require('fs');
 const express = require('express');
@@ -16,12 +16,12 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || process.env.HTTP_PORT;
 
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 PeerServer({ 
-    port: 443, 
+    port: process.env.PEERJS_PORT, 
     path: '/'
 });
 
@@ -62,7 +62,7 @@ const dashboardRouter = require("./routes/dashboard");
 app.use("/dashboard", dashboardRouter);
 
 //database connection
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/gring";
+const MONGODB_URI = process.env.MONGODB_URI || process.env.DATABASE_URL;
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
