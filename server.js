@@ -1,4 +1,3 @@
-// require('dotenv').config();
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 const fs = require('fs');
@@ -19,7 +18,7 @@ const io = socketio(server);
 
 const PORT = process.env.PORT || process.env.HTTP_PORT;
 
-server.listen(PORT, () => console.log(`http server running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 PeerServer({ 
     port: process.env.PEERJS_PORT, 
@@ -63,8 +62,8 @@ const dashboardRouter = require("./routes/dashboard");
 app.use("/dashboard", dashboardRouter);
 
 //database connection
-
-mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+const MONGODB_URI = process.env.MONGODB_URI || process.env.DATABASE_URL;
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to mongodb Database'));
