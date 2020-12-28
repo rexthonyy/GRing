@@ -326,11 +326,12 @@ class VideoCallTransmitterStage extends ConnectionStage {
     }
 
     start(){
-        const call = connection.myPeer.call(this.data.contactPeerId, this.data.stream);
+        let call = connection.myPeer.call(this.data.contactPeerId, this.data.stream);
         call.on('stream', userVideoStream => {
             let stage = connection.connectionStage;
             audio.stopAllAudio();
-            console.log(userVideoStream);
+            // console.log(userVideoStream);
+            // console.log(stage.data.stream);
             dialogs[4].show({
                 contactStream: userVideoStream,
                 userStream: stage.data.stream,
@@ -374,7 +375,8 @@ class VideoCallReceiverStage extends ConnectionStage {
             this.data.call.on('stream', userVideoStream => {
                 let stage = connection.connectionStage;
                 audio.stopAllAudio();
-                console.log(userVideoStream);
+                // console.log(userVideoStream);
+                // console.log(stage.data.stream);
                 dialogs[4].show({
                     contactStream: userVideoStream,
                     userStream: stage.data.stream,

@@ -16,6 +16,8 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
+const PORT = process.env.PORT || process.env.HTTP_PORT;
+
 server.listen(process.env.HTTP_PORT, () => console.log(`http server running on port ${process.env.HTTP_PORT}`));
 
 PeerServer({ 
@@ -101,6 +103,33 @@ var timeoutIds = {};
 
 //socket connection
 io.on('connection', socket => {
+
+    socket.on('join-room', userId => {
+        socket.join('testRoom');
+        socket.to('testRoom').broadcast.emit('user-connected', userId);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     socket.on('get-user-with-username', (username) => {
         User.findOne({ username: username }, '_id', (err, doc) => {
             let user = undefined;

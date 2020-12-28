@@ -272,6 +272,10 @@ body{
 	width: 600px;
 }
 
+.rex-width-800px{
+	width: 800px;
+}
+
 .rex-min-width-80px{
 	min-width: 80px;
 }

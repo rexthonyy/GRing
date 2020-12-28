@@ -9,6 +9,7 @@ window.onload = () => {
 	.then(() => {
 		checkNewUserLogin();
 		handleClickListeners();
+		runTestCase();
 	}).catch(err => {
 		console.log(err);
 	});
@@ -72,6 +73,80 @@ function menuCallback(data){
 }
 
 
+
+
+
+
+
+
+
+
+
+let isAnsweredCall = undefined;
+let isConnectedToCall = undefined;
+
+function runTestCase(){
+
+	const myVideo = getAnsweringVideoCallVideoElement2();
+	myVideo.muted = true;
+
+	navigator.mediaDevices.getUserMedia({
+		video: true,
+		audio: true
+	}).then(stream => {
+		 
+		connection.myPeer.on("call", call => {
+			console.log("answer connection request");
+			call.answer(stream);
+
+			call.on('stream', userVideoStream => {
+				if(isAnsweredCall == undefined){
+					isAnsweredCall = true;
+				}else{
+					isAnsweredCall = undefined;
+					return;
+				}
+				console.log("SHOW display stream");
+				
+				dialogs[4].show({
+		            contactStream: userVideoStream,
+		            userStream: stream,
+		            callback: ()=>{
+		            	dialogs[4].hide();
+		            }
+		        });
+			});
+		});
+
+		connection.socket.on("user-connected", userId => {
+			connectToNewUser(userId, stream);
+		});
+
+		connection.socket.emit('join-room', connection.peerId);
+	});
+}
+
+function connectToNewUser(userId, stream){
+	console.log("connected user: " + userId);
+	const call = connection.myPeer.call(userId, stream);
+	call.on('stream', userVideoStream => {
+		if(isConnectedToCall == undefined){
+			isConnectedToCall = true;
+		}else{
+			isConnectedToCall = undefined;
+			return;
+		}
+		console.log(userVideoStream);
+		console.log(stream);
+		dialogs[4].show({
+            contactStream: userVideoStream,
+            userStream: stream,
+            callback: ()=>{
+            	dialogs[4].hide();
+            }
+        });
+	});
+}
 
 
 

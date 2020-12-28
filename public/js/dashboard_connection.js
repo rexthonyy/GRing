@@ -4,7 +4,7 @@ class Connection {
         
         this.myPeer = new Peer({
             host: '/',
-            port: 3001,
+            port: 8000,
             path: '/',
             secure: true
         });
@@ -33,7 +33,7 @@ class ResponseListener {
             connection.peerId = id;
             callback(id);
         });
-
+/*
         myPeer.on('call', call => {
             this.responseHandler({ type: 'call', call: call});
         });
@@ -53,6 +53,6 @@ class ResponseListener {
             }else{
                 this.responseHandler(response);
             }
-        });
+        });*/
     }
 }

@@ -155,8 +155,14 @@ class AnsweringVideoCallDialog extends Dialog {
 	}
 
 	setup(data){
-		addVideoStream(getAnsweringVideoCallVideoElement1(), data.contactStream);
-		addVideoStream(getAnsweringVideoCallVideoElement2(), data.userStream);
+		let videoElm1 = getAnsweringVideoCallVideoElement1();
+		let videoElm2 = getAnsweringVideoCallVideoElement2();
+
+		videoElm1.muted = true;
+		videoElm2.muted = true;
+
+		addVideoStream(videoElm1, data.contactStream);
+		addVideoStream(videoElm2, data.userStream);
 	}
 
 	setClickListener(data){
